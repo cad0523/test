@@ -1,0 +1,12 @@
+git init
+echo "# test" >> README.md
+git status
+git add [files or directories]
+git commit -m "first commit"
+git remote add origin https://github.com/cad0523/test.git
+git config --global user.email "t_kado@hotmail.com"
+git push -u origin master
+
+git add commands.txt
+git commit
+git push -u origin master
