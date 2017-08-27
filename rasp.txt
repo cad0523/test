@@ -1,0 +1,30 @@
+RaspberryPi 3のCPU温度は、/sys/class/thermal/thermal_zone0/tempに逐次保存されています。
+そのため、catコマンドでファイル表示することで現在温度を知ることができます。
+
+①ターミナルを開いて以下のコマンドを実行します。
+$ cat /sys/class/thermal/thermal_zone0/temp 
+②５ケタで現在温度が取得できます。
+この値を1000で割れば摂氏温度になります。
+
+
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+def get_temp():
+    f = open("/sys/class/thermal/thermal_zone0/temp", "r")
+    tmp = 0
+    for t in f:
+        tmp = t[:2] + "." + t[2:5]
+    f.close()
+    return float(tmp)
+
+if __name__=='__main__':
+    temp = get_temp()
+    print(str(temp))
+
+
+
+
+
+
+
